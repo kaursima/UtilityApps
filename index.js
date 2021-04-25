@@ -1,11 +1,18 @@
 const readLineSync = require('readline-sync');
+
 function retry()
 {
   let r = readLineSync.question("Would you like to try any other feature? : Y/N ");
   if(r === "Y" || r === "y") start();
   else return;
 }
-
+function print(current) {
+  let i = 1;
+      for(let element in current.options)
+      {
+        console.log(i + ". " + current.options[element]); i++;
+      } 
+}
 
 function start() {
   console.log("\nPlease select which feature you would like to use : \n");
@@ -51,12 +58,9 @@ const apps =
       console.log(decodeURIComponent(url));
     },
     func() {
-      //console.log("Please enter your choice :\n1. Encode\n2. Decode\n");
-      let i = 1;
-      for(let element in this.options)
-      {
-        console.log(i + ". " + this.options[element]); i++;
-      } 
+          
+      const current = this;
+      print(current);
       let r = readLineSync.question("");
       if(r === "1") this.encode();
       else if(r === "2") this.decode();
@@ -80,11 +84,8 @@ const apps =
       console.log(Buffer.from(url, 'base64').toString('ascii'));
     },
     func() {
-      let i = 1;
-      for(let element in this.options)
-      {
-        console.log(i + ". " + this.options[element]); i++;
-      } 
+      const current = this;
+      print(current);
       let r = readLineSync.question("");
       if(r === "1") this.encoding();
       else if(r === "2") this.decoding();
@@ -104,7 +105,8 @@ const apps =
     func() {
       
       const str = readLineSync.question("Please enter String to be Hashed :\n");
-      let response = readLineSync.question("Please mention the type of hashing you wanna perform : \n\n1. md5\n2. sha1\n3. sha256\n4. sha512\n");
+      const current = this;
+      print(current);
       let hash_type;
       if(response === "1") hash_type = "md5";
       else if(response === "2") hash_type = "sha1";
@@ -129,11 +131,8 @@ const apps =
 
     },
     func() {
-      let i = 1;
-      for(let element in this.options)
-      {
-        console.log(i + ". " + this.options[element]); i++;
-      } 
+      const current = this;
+      print(current);
         const response = readLineSync.question("");
         if(response === "1") {
           const year = readLineSync.question('\nEnter the year ');
@@ -159,11 +158,8 @@ const apps =
     name : "Binary/Decimal/Hex/Octal Converters",
     options : ["Binary to Decimal","Binary to Hex","Binary to Octal","Decimal to Binary","Decimal to Hex","Decimal to Octal","Octal to Binary","Octal to Decimal","Octal to Hex","Hex to Binary","Hex to Decimal","Hex to Octal"],
       func() {
-          let i = 1;
-          for(let element in this.options)
-          {
-            console.log(i + ". " + this.options[element]); i++;
-          } 
+          const current = this;
+          print(current); 
           const response = readLineSync.question("");
           const val = readLineSync.question("Please enter value to be converted : \n");
           if ( response === "1") console.log(parseInt(val, 2).toString(10));
@@ -219,11 +215,8 @@ const apps =
         return "("+ +r + "," + +g + "," + +b + ")";
     },
     func() {
-        let i = 1;
-        for(let element in this.options)
-          {
-             console.log(i + ". " + this.options[element]); i++;
-          } 
+        const current = this;
+        print(current); 
         const response = readLineSync.question("");
         if(response === "1") {
           const red = readLineSync.question('\nEnter a value for Red : ');
@@ -246,11 +239,8 @@ const apps =
     name : "Unit Converters",
     options : ["Celcius to Farenheit","Farenheit to Celcius", "Km to Miles","Miles to Km"],
     func() {
-      let i = 1;
-      for(let element in this.options)
-      {
-        console.log(i + ". " + this.options[element]); i++;
-      } 
+      const current = this;
+      print(current); 
       const response = readLineSync.question("");
       const val = readLineSync.question("Enter value to be converted : \n");
       if ( response === "1") console.log((val * 9 / 5 + 32).toString());
