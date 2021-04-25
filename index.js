@@ -25,22 +25,23 @@ function start() {
   let response = readLineSync.question("");
   response = parseInt(response);
   switch(response) {
-    case 1 : apps.url_encode_decode.func(); retry();
+    case 1 : apps.url_encode_decode.func(); 
     break;
-    case 2 : apps.base64_Encoding_Decoding.func(); retry();
+    case 2 : apps.base64_Encoding_Decoding.func(); 
     break;
-    case 3 : apps.string_Hashing.func(); retry();
+    case 3 : apps.string_Hashing.func(); 
     break;
-    case 4 : apps.epoch_Converters.func(); retry();
+    case 4 : apps.epoch_Converters.func();
     break;
-    case 5 : apps.converters.func(); retry();
+    case 5 : apps.converters.func(); 
     break;
-    case 6 : apps.rgb.func(); retry();
+    case 6 : apps.rgb.func(); 
     break;
-    case 7 : apps.unit_Converters.func(); retry();
+    case 7 : apps.unit_Converters.func(); 
     break;
-    default : console.log("Invalid Choice"); retry();
+    default : console.log("Invalid Choice"); 
   };
+  retry();
 
 }
 
